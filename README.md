@@ -44,8 +44,3 @@ Sales Trends
 
 These insights empower stakeholders with key business metrics, enabling strategic decision-making.
 
-🛡️ License
-This project is licensed under the MIT License. You are free to use, modify, and share this project with proper attribution.
-
-🌟 About Me
-Hi there! I'm Salman Khan Shafi. I am data enthusiast and love to turn raw data into useful information.
