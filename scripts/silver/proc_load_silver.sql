@@ -102,10 +102,11 @@ BEGIN
 				ELSE 'n/a'
 			END AS prd_line, -- Map product line codes to descriptive values
 			CAST(prd_start_dt AS DATE) AS prd_start_dt,
-			CAST(
-				LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt) - 1 
-				AS DATE
-			) AS prd_end_dt -- Calculate end date as one day before the next start date
+			DATEADD(
+				DAY,
+				-1,
+				LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)
+			) AS prd_end_dt-- Calculate end date as one day before the next start date
 		FROM bronze.crm_prd_info;
         SET @end_time = GETDATE();
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
